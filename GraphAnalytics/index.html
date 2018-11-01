@@ -1,0 +1,75 @@
+<html>
+<head>
+<style>
+    .chart {
+        display: block;
+        margin: auto;
+        margin-top: 60px;
+        font-size: 11px;
+    }
+
+
+
+    rect.parent {
+        cursor: pointer;
+        fill: steelblue;
+    }
+
+    text {
+        pointer-events: none;
+    }
+</style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/controlStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/graphStyle.css">
+
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+    <script src="Graphic.js"></script>
+    <script src="Rectangle.js"></script>
+    <script src="LogLogRenderer.js"></script>
+
+    <script src="ImplicitTreeRenderer.js"></script>
+    <script src="GraphLoader.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="Partition.js"></script>
+    <script src="ScatterPlotRenderer.js"></script>
+
+
+</head>
+<body>
+<svg id="svgCanvas" onclick="ctrl.closeNav()"></svg>
+
+<span class="optionsbtn" onclick="ctrl.openNav()">&#9776; options</span>
+
+<div id="sidemenu" class="sidenav">
+    <div class="sidenavContent">
+        <a href="javascript:void(0)" class="closebtn" onclick="ctrl.closeNav()">&times;</a>
+        <h3>Choose a graph</h3>
+        <p>-Load graph</p>
+        <input type="file" value="Choose a graph" onchange="ctrl.onFileSelect(event)">
+
+    </div>
+</div>
+
+<script src="./sidenav/sidenavControl.js"> ctrl.openNav() </script>
+
+<div id="draw"></div>
+<!--
+<svg width="400" height="110">
+    <rect width="300" height="100" style="fill:rgb(0,0,255); stroke-width: 3 ;stroke:rgb(0,0,0)" />
+    <rect width="250" height="80" x="10" y="10" style="fill:rgb(0,0,200); stroke-width: 3 ;stroke:rgb(0,0,0)" />
+</svg>-->
+
+</body>
+</html>

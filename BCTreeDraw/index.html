@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>block cut vertex tree</title>
+    <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
+    <script src="d3.min.js"></script>
+    <script src="DrawAlgorithm.js"></script>
+    <script src="Node.js"></script>
+    <script src="Edge.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="Graph.js"></script>
+    <script src="ConnectedComponentsGraph.js"></script>
+    <script src="GraphLoader.js"></script>
+    <script src="GraphUtilities.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/controlStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/graphStyle.css">
+
+    <style>
+        h1 {
+            font-weight: bold;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+<body>
+
+<center><h1>(Block cut Vertex and SPQR) Tree Drawing</h1></center>
+
+<div class="sidenavContent">
+    <p>Load graph</p>
+    <input type="file" value="Choose a graph" onchange="ctrl.onFileSelect(event)">
+</div>
+
+<svg id="svgCanvas" width = 1500px height = 600px style =" border : 1px solid gray; background-color: white" transform="translate(0,50)">
+
+</svg>
+<br><br><br><br>
+<script src="./sidenav/sidenavControl.js"></script>
+
+</body>
+</html>
