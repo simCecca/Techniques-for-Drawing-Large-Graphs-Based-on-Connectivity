@@ -2,18 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- For GPU -->
+    <script type="text/javascript" src="//stardustjs.github.io/stardust/v0.1.1/stardust.bundle.min.js"></script>
 
-    <title>block cut vertex tree</title>
-    <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
-    <script src="d3.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="./images/icon.PNG" />
+    <title>Large Graphs Drawing Based on Connectivity</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!--<script src="d3.min.js"></script>-->
     <script src="DrawAlgorithm.js"></script>
     <script src="Node.js"></script>
     <script src="Edge.js"></script>
     <script src="Renderer.js"></script>
+    <script src="GpuRenderer.js"></script>
     <script src="Graph.js"></script>
     <script src="ConnectedComponentsGraph.js"></script>
     <script src="GraphLoader.js"></script>
     <script src="GraphUtilities.js"></script>
+    <script src="DialogueBox.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/controlStyle.css">
     <link rel="stylesheet" type="text/css" href="css/graphStyle.css">
@@ -22,22 +27,65 @@
         h1 {
             font-weight: bold;
             font-size: 30px;
+            margin: 0;
+            padding: 0;
         }
+
+        h6 {
+            margin: 0px;
+        }
+
     </style>
 
 </head>
 <body>
 
-<center><h1>(Block cut Vertex and SPQR) Tree Drawing</h1></center>
+<center><h1>Large Graphs Drawing Based on Connectivity</h1></center>
 
 <div class="sidenavContent">
+<table>
+    <tr>
+        <td>
     <p>Load graph</p>
     <input type="file" value="Choose a graph" onchange="ctrl.onFileSelect(event)">
+        </td>
+        <td>
+            <br>
+            <p>GPU or CPU <h6>(always the first thing to do)</h6>
+            <select onchange="ctrl.kindOfProcessor(this.value)">
+                <option value="" selected disabled>Select the processor type</option>
+                <option value="CPU">CPU</option>
+                <option value="GPU">GPU</option>
+            </select>
+            </p>
+        </td>
+        <td>
+    <p>Predefined graphs</p>
+        <select onchange="ctrl.onAvailableGraphs(this.value)">
+            <option value="" selected disabled>Choose a predefined graph</option>
+            <option value="./AvailableGraphs/amazon.json">Amazon Product Network [nodes: 334,863   edges: 925,872]</option>
+            <option value="./AvailableGraphs/amazon312.json">Amazon312 product co-purchasing network from March 12 2003 [nodes: 400,727   edges: 3,200,440]</option>
+            <option value="./AvailableGraphs/amazon505.json">Amazon505 product co-purchasing network from May 5 2003 [nodes: 410,236   edges: 3,356,824]</option>
+            <option value="./AvailableGraphs/ca-AstroPh.json">Astro-Physics - collaboration network of Arxiv Astro Physics [nodes: 18,772   edges: 198,110]</option>
+            <option value="./AvailableGraphs/internet.json">Internet [nodes: 22,963   edges: 48436]</option>
+            <option value="./AvailableGraphs/notreDam.json">Notre-Dam - web graph of Notre Dame [nodes: 325,729   edges: 1,497,134]</option>
+            <option value="./AvailableGraphs/youtube.json">Youtube online social network [nodes: 1,134,890   edges: 2,987,624]</option>
+        </select>
+        </td>
+
+        <td>
+            <p>Reset the inserted fields</p>
+            <input type="button" value="Reset" onClick="window.location.reload()">
+        </td>
+    </tr>
+</table>
 </div>
-
-<svg id="svgCanvas" width = 1500px height = 600px style =" border : 1px solid gray; background-color: white" transform="translate(0,50)">
-
+<svg id = "idsvg" width="1500" >
+<text id = "dialogText" x="400" y ="50" font-size="20" font-weight="bold" dominant-baseline="alphabetic" fill= "green">For correct use select first the type of processor you want to use and then select a graph</text>
 </svg>
+<canvas id="main-canvas" width = 0px height = 0px></canvas>
+<div id="svgdiv"></div>
+
 <br><br><br><br>
 <script src="./sidenav/sidenavControl.js"></script>
 

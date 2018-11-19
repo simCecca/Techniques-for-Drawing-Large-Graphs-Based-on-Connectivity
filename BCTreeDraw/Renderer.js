@@ -11,15 +11,19 @@ class Renderer {
         this.isJustCreatedTheRectForTheZoom = false;
     }
 
-    setGraph(graph) {
+   async setGraph(graph) {
+        //dialogueBox("Coordinate Assignment");
         this.graph = graph;
-        this.algorithm.drawBCTree(graph);
+        await this.algorithm.drawBCTree(graph);
+        console.log("renderer");
+        this.render();
         const renderFunction = () => {
+            console.log("renderer");
             this.render();
             //requestAnimationFrame(renderFunction);
         };
 
-        requestAnimationFrame(renderFunction);
+        //requestAnimationFrame(renderFunction);
     }
 
     renderNodes(nodes, cc) {
@@ -30,7 +34,7 @@ class Renderer {
         svgNodes.enter()
             .append("circle")
             .attr("id", node => node.getId())
-            .attr("r", node => { node.dimension = (Math.log10(node.getSize()) / Math.log10(this.graph.getConnectedComponent(cc).getMaxSize())) * 20; if(node.hide) node.dimension = 0; if(!node.isABNode){node.dimension = 2} if(node.isBlack){node.dimension = 2} return node.dimension})
+            .attr("r", node => { node.dimension = (Math.log10(node.getSize()) / Math.log10(this.graph.getConnectedComponent(cc).getMaxSize())) * 20; if(node.hide) node.dimension = 0; if(!node.isABNode || node.isBlack || (node.dimension < 2 && !node.hide)){node.dimension = 2;} return node.dimension})
 
             .on("mouseover", (_, i, nodes) => {d3.select(nodes[i]).transition().duration(100).attr("r", node => node.dimension * 2)})
             .on("mouseout", (_, i, nodes) => {d3.select(nodes[i]).transition().duration(100).attr("r", node => node.dimension)})
@@ -69,8 +73,8 @@ class Renderer {
             var gElem = this.svg.call(zoom);
 
             gElem//.append("rect")
-                .attr("width", this.width + 50)
-                .attr("height", this.height + 50)
+                .attr("width", this.width)
+                .attr("height", this.height)
                 //.style("fill", "none")
                 .style("pointer-events", "all")
                 .on("contextmenu", () => {
@@ -100,5 +104,6 @@ class Renderer {
             this.rendererRectForZooming();
         });
     }
+
 
 }

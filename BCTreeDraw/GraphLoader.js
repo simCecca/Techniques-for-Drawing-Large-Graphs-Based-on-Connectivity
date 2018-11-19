@@ -5,6 +5,8 @@ class GraphLoader{
 
     async loadFromFile(file) {
         let json = await this._load(file);
+        dialogueBox("loading of the graph");
+        await sleep(50);
         let cc = this.loadGraph(json);
         return cc;
         //now that the file is loaded, call the renderer to plot every kind of plotting
@@ -23,13 +25,21 @@ class GraphLoader{
             }
         });
         reader.readAsText(file);
-
         return resultPromise;
     }
 
+    async loadFromAvailableGraphs(path){
+        dialogueBox("Downloading of the selected graph");
+        const response = await fetch(path);
+        const jsonGraph = await response.json();
+        dialogueBox("Graph Loading");
+        await sleep(50);
+        return this.loadGraph(jsonGraph);
+    }
 
     /*for creating the graph structure*/
     loadGraph(jsonGraph){
+
         //the first thing to do is to create the connected components graph in witch we insert each connected components (subgraph)
         const connectedComponentsGraph = new ConnectedComponentsGraph();
 
