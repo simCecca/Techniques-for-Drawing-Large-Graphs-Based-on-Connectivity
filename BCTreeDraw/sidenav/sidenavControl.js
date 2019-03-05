@@ -63,6 +63,9 @@ class Controller {
         this.renderer.setGraph(graph);
     }
 
+    stopZoom(){
+        this.renderer.stopZoom();
+    }
 
 
 

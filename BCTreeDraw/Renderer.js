@@ -109,10 +109,14 @@ class Renderer {
         }
     }
 
+    stopZoom(){
+        this.zoomStop = (this.zoomStop + 1) % 2;
+    }
+
     zoom(){
         //todo: d3.event.transform is a string like this: "translate(30,40) scale(2)" so if the scale is changed from the last update ricalculate the coordinate with the algorithm
         this.svgElement.attr("transform", d3.event.transform);
-        if(d3.event.transform.k !== this.previousScale) {
+        if(d3.event.transform.k !== this.previousScale && !this.zoomStop) {
             //rescale all the nodes & edges
             this.renderNodes(this.graph.graph[0].getNodes(), 0, d3.event.transform.k);
             this.renderEdges(this.graph.graph[0].getEdges(), d3.event.transform.k);

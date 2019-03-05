@@ -70,8 +70,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="124" column="58" lean-forward="true" selection-start-line="124" selection-start-column="58" selection-end-line="124" selection-end-column="58" />
+            <state relative-caret-position="545">
+              <caret line="135" selection-start-line="135" selection-end-line="135" />
             </state>
           </provider>
         </entry>
@@ -291,7 +291,7 @@
       <workItem from="1534408658848" duration="6283000" />
       <workItem from="1534493724973" duration="845000" />
       <workItem from="1534509594643" duration="1812000" />
-      <workItem from="1551775624126" duration="8996000" />
+      <workItem from="1551775624126" duration="9241000" />
     </task>
     <task id="LOCAL-00001" summary="drawing d3 code and a simple algorithm to assigm the coordinate to each node">
       <created>1534493882692</created>
@@ -304,7 +304,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67247000" />
+    <option name="totallyTimeSpent" value="67492000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -466,8 +466,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="124" column="58" lean-forward="true" selection-start-line="124" selection-start-column="58" selection-end-line="124" selection-end-column="58" />
+        <state relative-caret-position="545">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
         </state>
       </provider>
     </entry>
