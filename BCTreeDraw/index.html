@@ -38,6 +38,7 @@
     </style>
     <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
 <div class = "top-page">
@@ -56,14 +57,14 @@
                 <div class="form-group">
                     <select id="inputState" class="form-control" onchange="ctrl.setFileOnAvailableGraph(this.value)">
                         <option value="" selected disabled>Choose a predefined graph</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/gnutellap2p31.json">p2p network - Gnutella peer to peer network from August 31 2002 [nodes: 62,586   edges: 147,892]</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/internet.json">Internet [nodes: 22,963   edges: 48436]</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/asOregon.json">AS peering information inferred from Oregon route-views [nodes: 11,461   edges: 32,730]</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/amazon.json">Amazon Product Network [nodes: 334,863   edges: 925,872]</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/amazon312.json">Amazon312 product co-purchasing network from March 12 2003 [nodes: 400,727   edges: 3,200,440]</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/amazon505.json">Amazon505 product co-purchasing network from May 5 2003 [nodes: 410,236   edges: 3,356,824]</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/ca-AstroPh.json">Astro-Physics - collaboration network of Arxiv Astro Physics [nodes: 18,772   edges: 198,110]</option>
-                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/notreDam.json">Notre-Dam - web graph of Notre Dame [nodes: 325,729   edges: 1,497,134]</option>
+                        <option value="./AvailableGraphs/gnutellap2p31.json">p2p network - Gnutella peer to peer network from August 31 2002 [nodes: 62,586   edges: 147,892]</option>
+                        <option value="./AvailableGraphs/internet.json">Internet [nodes: 22,963   edges: 48436]</option>
+                        <option value="./AvailableGraphs/asOregon.json">AS peering information inferred from Oregon route-views [nodes: 11,461   edges: 32,730]</option>
+                        <option value="./AvailableGraphs/amazon.json">Amazon Product Network [nodes: 334,863   edges: 925,872]</option>
+                        <option value="./AvailableGraphs/amazon312.json">Amazon312 product co-purchasing network from March 12 2003 [nodes: 400,727   edges: 3,200,440]</option>
+                        <option value="./AvailableGraphs/amazon505.json">Amazon505 product co-purchasing network from May 5 2003 [nodes: 410,236   edges: 3,356,824]</option>
+                        <option value="./AvailableGraphs/ca-AstroPh.json">Astro-Physics - collaboration network of Arxiv Astro Physics [nodes: 18,772   edges: 198,110]</option>
+                        <option value="./AvailableGraphs/notreDam.json">Notre-Dam - web graph of Notre Dame [nodes: 325,729   edges: 1,497,134]</option>
                     </select>
                 </div>
             </div>
@@ -129,7 +130,6 @@
     });
 </script>
 <script src="./sidenav/sidenavControl.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
