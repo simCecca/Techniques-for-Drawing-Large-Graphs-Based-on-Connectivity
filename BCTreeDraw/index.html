@@ -6,7 +6,7 @@
     <script type="text/javascript" src="//stardustjs.github.io/stardust/v0.1.1/stardust.bundle.min.js"></script>
 
     <link rel="shortcut icon" type="image/png" href="./images/icon.PNG" />
-    <title>Large Graphs Drawing Based on Connectivity</title>
+    <title>Large Graphs Drawing Based on Connectivity (First Version)</title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <!--<script src="d3.min.js"></script>-->
     <script src="DrawAlgorithm.js"></script>
@@ -36,58 +36,103 @@
         }
 
     </style>
-
+    <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-
-<center><h1>Large Graphs Drawing Based on Connectivity</h1></center>
-
-<div class="sidenavContent">
-<table>
-    <tr>
-        <td>
-    <p>Load graph</p>
-    <input type="file" value="Choose a graph" onchange="ctrl.onFileSelect(event)">
-        </td>
-        <td>
-            <br>
-            <p>GPU or CPU <h6>(always the first thing to do)</h6>
-            <select onchange="ctrl.kindOfProcessor(this.value)">
-                <option value="" selected disabled>Select the processor type</option>
-                <option value="CPU">CPU</option>
-                <option value="GPU">GPU</option>
-            </select>
-            </p>
-        </td>
-        <td>
-    <p>Predefined graphs</p>
-        <select onchange="ctrl.onAvailableGraphs(this.value)">
-            <option value="" selected disabled>Choose a predefined graph</option>
-            <option value="./AvailableGraphs/amazon.json">Amazon Product Network [nodes: 334,863   edges: 925,872]</option>
-            <option value="./AvailableGraphs/amazon312.json">Amazon312 product co-purchasing network from March 12 2003 [nodes: 400,727   edges: 3,200,440]</option>
-            <option value="./AvailableGraphs/amazon505.json">Amazon505 product co-purchasing network from May 5 2003 [nodes: 410,236   edges: 3,356,824]</option>
-            <option value="./AvailableGraphs/ca-AstroPh.json">Astro-Physics - collaboration network of Arxiv Astro Physics [nodes: 18,772   edges: 198,110]</option>
-            <option value="./AvailableGraphs/internet.json">Internet [nodes: 22,963   edges: 48436]</option>
-            <option value="./AvailableGraphs/notreDam.json">Notre-Dam - web graph of Notre Dame [nodes: 325,729   edges: 1,497,134]</option>
-            <option value="./AvailableGraphs/youtube.json">Youtube online social network [nodes: 1,134,890   edges: 2,987,624]</option>
-        </select>
-        </td>
-
-        <td>
-            <p>Reset the inserted fields</p>
-            <input type="button" value="Reset" onClick="window.location.reload()">
-        </td>
-    </tr>
-</table>
+<div class = "top-page">
+    <h1>Large Graphs Drawing Based on Connectivity (First Version)</h1>
 </div>
-<svg id = "idsvg" width="1500" >
-<text id = "dialogText" x="400" y ="50" font-size="20" font-weight="bold" dominant-baseline="alphabetic" fill= "green">For correct use select first the type of processor you want to use and then select a graph</text>
-</svg>
-<canvas id="main-canvas" width = 0px height = 0px></canvas>
-<div id="svgdiv"></div>
+<div class="jumbotron container-custom">
+    <form>
+        <div class="row">
+            <div class="col">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile02" onchange="ctrl.setFileSelected(event)" data-toggle="tooltip" data-placement="top" data-html="true" title="the selected graph must respect a certain format, to learn more read the wiki section of this project on github (link below)">
+                    <label class="custom-file-label" for="inputGroupFile02">Load graph</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <select id="inputState" class="form-control" onchange="ctrl.setFileOnAvailableGraph(this.value)">
+                        <option value="" selected disabled>Choose a predefined graph</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/gnutellap2p31.json">p2p network - Gnutella peer to peer network from August 31 2002 [nodes: 62,586   edges: 147,892]</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/internet.json">Internet [nodes: 22,963   edges: 48436]</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/asOregon.json">AS peering information inferred from Oregon route-views [nodes: 11,461   edges: 32,730]</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/amazon.json">Amazon Product Network [nodes: 334,863   edges: 925,872]</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/amazon312.json">Amazon312 product co-purchasing network from March 12 2003 [nodes: 400,727   edges: 3,200,440]</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/amazon505.json">Amazon505 product co-purchasing network from May 5 2003 [nodes: 410,236   edges: 3,356,824]</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/ca-AstroPh.json">Astro-Physics - collaboration network of Arxiv Astro Physics [nodes: 18,772   edges: 198,110]</option>
+                        <option value="http://simonececcarelli.altervista.org/TechniquesForDrawingLargeGraphsBasedOnConnectivity/AvailableGraphs/notreDam.json">Notre-Dam - web graph of Notre Dame [nodes: 325,729   edges: 1,497,134]</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col">
+                <div class = "col-kind-processor">
+                    <div class = "text-formatting">
+                        <div class="form-check form-check-inline">
+                            <p>Select the kind of processor:</p>
+                        </div>
+                        <div class="form-check form-check-inline cpu-gpu-input">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="CPU" onchange="ctrl.setProcessorKind(this.value)">
+                            <label class="form-check-label" for="inlineRadio1">CPU</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="GPU" onchange="ctrl.setProcessorKind(this.value)">
+                            <label class="form-check-label" for="inlineRadio2">GPU</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "col">
+                <button type="button" class="btn btn-dark mb-2" onClick="ctrl.drawingFlowHandle()">Submit</button>
+            </div>
+        </div>
+    </form>
+    <hr class="my-4">
+    <div class = "drawing-status">
+        <p><h5>Drawing Status:</h5></p>
+    </div>
+    <svg id = "idsvg"  width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg " style="background: white;">
+        <text id = "dialogText" x="0" y ="55%" font-size="20" font-weight="bold" dominant-baseline="alphabetic" fill= "gray">Waiting for a graph</text>
+    </svg>
+    <hr class="my-4">
+    <div class="row buttons-row">
+        <div class = "col">
+            <button type = "button" class="btn btn-warning" onclick="ctrl.stopZoom()" data-toggle="tooltip" data-placement="top" title="In a realistic zoom you should resize properly all the objects in the window, but if you have many objects the time required become important, then clicking this button will have a linear zoom, but much faster" >
+                Stop Resizing Zoom
+            </button>
+        </div>
+        <div class="col">
+            <button type="button" onClick="window.location.reload()" class="btn btn-danger">Reset the inserted fields</button>
+        </div>
+        <div class="col">
+            <button type="button" onClick="window.location='https://github.com/simCecca/Techniques-for-Drawing-Large-Graphs-Based-on-Connectivity/wiki'" class="btn btn-dark">Link to the project</button>
+        </div>
+    </div>
+    <div id="svgdiv">
+        <hr class="my-4">
+        <canvas id="main-canvas" width = 100% height = 80%></canvas>
+    </div>
 
-<br><br><br><br>
+<script>
+    $('#inputGroupFile02').on('change',function(){
+        //get the file name
+        var fileName = $(this).val();
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(fileName);
+    })
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 <script src="./sidenav/sidenavControl.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>

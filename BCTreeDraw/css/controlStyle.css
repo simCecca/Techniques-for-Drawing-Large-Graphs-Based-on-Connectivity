@@ -97,3 +97,39 @@ input.optionText {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+.col-kind-processor {
+    background: white;
+    border: 0.01em solid gainsboro;
+}
+
+.text-formatting {
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: -1%;
+}
+
+.cpu-gpu-input {
+    margin-left: 5%;
+}
+
+.container-custom {
+    margin-top: 5%;
+    background: deepskyblue !important;
+}
+
+.top-page {
+    text-align: center;
+    height: 105%;
+    background: deepskyblue;
+}
+
+.jumbotron {
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+}
+
+.buttons-row {
+    margin-bottom: 0%;
+}

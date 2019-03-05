@@ -3,8 +3,8 @@ class GpuRenderer {
         this.svg = d3.select("#svgCanvas");
         this.svgElement = this.svg.append("g");
         this.graph = null;
-        this.width = 1500;
-        this.height = 600;
+        this.width = window.screen.availWidth * 0.85;
+        this.height = window.screen.availHeight;
         this.algorithm = new DrawAlgorithm(this.width, this.height); // Dummy graph
         this.isJustCreatedTheRectForTheZoom = false;
 

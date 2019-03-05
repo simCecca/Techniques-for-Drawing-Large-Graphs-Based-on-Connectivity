@@ -7,6 +7,7 @@ class Node{
         this.name = id;
         //this.name = this.name.concat(size);
         this.children = [];
+        this.edges = [];
         this.importance = importance;
 
         this.isABNode = bNode;

@@ -111,6 +111,8 @@ class GraphLoader{
                 value.getNeighbours().forEach((neighbour) => {
                     const currentEdge = new Edge(neighbour, value);
                     graph.addEdge(currentEdge);
+                    value.edges.push(currentEdge);
+                    neighbour.edges.push(currentEdge);
                 })
             });
             connectedComponentsGraph.addConnecredComponent(graph);
